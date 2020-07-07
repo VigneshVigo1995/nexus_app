@@ -1,0 +1,90 @@
+ <html>
+ <body style="background-color:f2f6fb;">
+
+
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div1 {
+    margin-bottom: 0px;
+    margin: auto;
+    padding: 30px 0px 350px 0px;
+    box-shadow: 1px 1px 6px silver;
+    background-color: white;
+    border-radius: 3px;
+    width: 980px;
+}
+#div2 { display: table-cell;
+  margin-top: 30px;
+  padding-left: 30px; 
+  font-size: 15px;
+  color: #002878;
+  border: 0px solid #e0e0e0;
+  width: 350px; }
+
+
+#div3 {
+    display: table-cell;
+    padding-left: 200px;
+    font-size: 15px;
+    color: #002878;
+    vertical-align: top;
+}
+.button2 {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: 07528E; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+</style>
+    <title>Nexus</title>
+    <div id='div1'>
+    <img src="{{url_for('static', filename='bw_img.png')}}" height="305" width="980" alt="Best Western International logo" style="width: 980px; ">
+    <br> <br>
+    <form method=post enctype=multipart/form-data>
+      <div id='div2'>
+      <h2>Enter BWI Rate Code</h2>
+      <INPUT TYPE="Text" Name="bwi" Value =""><br>
+      <h2>LRA or Non-LRA or Both?</h2>
+      <input type="radio" name="lra" value='0' checked> LRA only<br>
+      <input type="radio" name="lra" value='1'> Non-LRA only<br>
+      <input type="radio" name="lra" value='2'> Both<br>
+      <h2>Select Room Type</h2>
+      <input type="radio" name="rt" value='0' checked> Standard<br>
+      <input type="radio" name="rt" value='1'> Upgrade<br>
+      <input type="radio" name="rt" value='2'> Both<br>
+</div>
+<div id='div3'>
+      <h2>Which Occupancy are you loading</h2>
+      <input type="radio" name="ol" value='0' checked> Single only<br>
+      <input type="radio" name="ol" value='1'> Double only<br>
+      <input type="radio" name="ol" value='2'> Both<br>
+      <h2>Select the Rate Integrity Percentage</h2>
+      <input type="radio" name="ri" value='0'> 0% <br>
+      <input type="radio" name="ri" value='5'> 5% <br>
+      <input type="radio" name="ri" value='10'> 10% <br>
+      <input type="radio" name="ri" value='12'> 12% <br>
+      <input type="radio" name="ri" value='15'> 15% <br>
+      <input type="radio" name="ri" value='17'> 17% <br>
+      <input type="radio" name="ri" value='19'> 19% <br>
+      <input type="radio" name="ri" value='20'> 20% <br>
+      <input type="radio" name="ri" value='25'> 25% <br>
+      <INPUT TYPE="Text" Name="ri" Value ="">Enter Custom Rate Integrity
+      <br> <br>
+
+      <div><input type=submit value=Download_Excel class=button2><div>
+</div>
+      </div>
+ </html>

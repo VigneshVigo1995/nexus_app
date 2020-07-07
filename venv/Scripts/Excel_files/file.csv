@@ -1,0 +1,12 @@
+1H,Corp Acct#
+1,01159210
+2H,Corp Acct #,GDS HOST,GDS Rate Codes,Multi Rate Codes,Resort,BWI Rate Code,Inactive Date
+2,01159210,1P,aaa,AIRN,51018,fff,
+3H,Resort,BWI Rate Codes,RATE LEVEL,Rate Code for Avail,Base Rate,FORECAST SEGMENT,Flat/Percentage,Rate Code for Confirm,MODIFY_RATE_YN,MODIFY_CONFIRM_YN,MODIFY_INVENTORY_YN,MODIFY_STATUS_YN,ROH_YN
+3,51018,fff,A,RACK,RACK,CORPORATE,P,,N,N,N,N,N
+4H,Resort,BWI Rate Code,Room Type,Begin Date,End Date,1 Person rate,2 Person rate,S,M,T,W,F
+4,51018,fff,Standard,12/31/2018,12/31/2019,-0.15,-0.15,,,,,
+5H,Resort,BWI Rate Code,Room Type,Begin Date,End Date,1 Person rate,2 Person rate,S,M,T,W,F
+5,51018,fff,Standard,12/31/2018,12/31/2019,129.99,0,,,,,
+8H,Resort,BWI Rate Code,Begin Date,End Date,Guarantee Policy,Cancel Code,Hold Code
+8,51018,fff,07/06/2020,12/31/2099,GTD,6PM,6PM

@@ -1,0 +1,54 @@
+ <html>
+  <body style="background-color:f2f6fb;">
+
+
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#div1 {
+    margin-bottom: 0px;
+    margin: auto;
+    padding: 30px 0px 350px 0px;
+    box-shadow: 1px 1px 6px silver;
+    background-color: white;
+    border-radius: 3px;
+    width: 980px;
+}
+#div2 { display: table-cell;
+  margin-top: 30px;
+  padding-left: 30px; 
+  font-size: 15px;
+  color: #002878;
+  border: 0px solid #e0e0e0;
+  width: 350px; }
+.button2 {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: 07528E; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+</style>
+<div id='div1'>
+    <img src="{{url_for('static', filename='bw_img.png')}}" height="305" width="980" alt="Best Western International logo" style="width: 980px; ">
+    <br> <br>
+    <title>Nexus</title>
+    <div id='div2'>
+    <h1>Download Excel file</h1>
+    <form method=post enctype=multipart/form-data>
+      <button type="button" class=button2 onclick="window.location.href='{{ url_for('index') }}';">Download Excel file</button> <br><br>
+      <button type="button" class=button2 onclick="window.location.href='{{ url_for('audit') }}';">Download Report File</button>
+ </div>
+ </div>
+ </html>
