@@ -148,7 +148,6 @@ def etl(fd, rt, ol, lra, ria, bwi, repeat, qa, ww):
     # return(error(df_Main,e))
 
     lm = len(df_Main)
-
     d = d.iloc[1:]
     d = d[["Corp Acct#", "GDS Rate Codes", "Multi Rate Code", "Resort", "BWI Rate Code", "Map to ROH", "Begin Date",
            "End Date", "Sabre", "Worldspan", "Amaedus", "Galileo", "Web"]]
