@@ -265,6 +265,8 @@ def down1():
 
     if a == 0:
         return render_template('dcsv.html')
+    elif a==8:
+        return render_template('error_only.html')
     else:
         return render_template('errorcsv.html')
 
