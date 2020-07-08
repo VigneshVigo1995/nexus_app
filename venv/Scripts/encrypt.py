@@ -159,6 +159,7 @@ def etl(fd,rt,ol,lra,ria,bwi,repeat,qa,ww):
 	d["BWI Rate Code"]=bwi
 	idx = 0
 	d.insert(loc=idx, column='2H', value=2)
+
 	if d.empty:
 		print("All room types and resorts are not matching or have overlapping dates or date gaps")
 		e=8
@@ -203,6 +204,14 @@ def etl(fd,rt,ol,lra,ria,bwi,repeat,qa,ww):
 	Resort_Num=Hotel_Details['CRSHotelID']
 	#print(Hotel_Details)
 
+	for season in range(10):
+		try:
+			if lra=='2':
+				df_Main.loc[df_Main['AcceptedRateType'] == 'NLRA', 'Preferred_LRA_S'+str(season+1)+'_SGL'] = None
+				df_Main.loc[df_Main['AcceptedRateType'] == 'NLRA', 'Preferred_LRA_S'+ str(season+ 1) +'_DBL'] = None
+		except:
+			break
+
 
 
 	#################################################################################################################################################
@@ -220,14 +229,15 @@ def etl(fd,rt,ol,lra,ria,bwi,repeat,qa,ww):
 	if rt=='1':
 		df_Main = df_Main[df_Main.RoomTypeName != 'STANDARD']
 	#print(df_Main)
-	for i in range(5):
-		sea.append(df_Main[df_Main["Season"+str(i+1)+"End"].notnull()])
-		
-
-
+	for i in range(10):
+		try:
+			sea.append(df_Main[df_Main["Season"+str(i+1)+"End"].notnull()])
+		except:
+			break
 
 		if sea[i].empty:
 			res.append(pd.DataFrame())
+
 		else:
 			lens.append(sea[i]['RoomDescription'].str.split(';').map(len))
 
@@ -302,7 +312,7 @@ def etl(fd,rt,ol,lra,ria,bwi,repeat,qa,ww):
 			except:
 				res[i]['End Date'] = pd.to_datetime(res[i]['End Date'])
 				res[i]['End Date']=res[i]['End Date'].apply(lambda x: x.strftime('%m/%d/%Y'))
-	Rates=pd.concat([res[0],res[1],res[2],res[3],res[4]])
+	Rates=pd.concat(res)
 	Rates['colFromIndex'] = Rates.index
 	Rates = Rates.sort_values(by=['colFromIndex', 'End Date'])
 	Rates=Rates.drop(['colFromIndex'],axis=1)
@@ -586,6 +596,7 @@ def etl(fd,rt,ol,lra,ria,bwi,repeat,qa,ww):
 	for index, row in df_vc.iterrows():
 		Cancel_Policy.loc[Cancel_Policy['Cancel Code'] == row['CancelValue'], 'Cancel Code'] = row['Map To CPM Value']
 	Cancel_Policy.loc[Cancel_Policy['Cancel Code'] == "6PM", 'Hold Code'] = '6PM'
+	Cancel_Policy.loc[Cancel_Policy['Cancel Code'] == "18:00", 'Hold Code'] = '6PM'
 	Cancel_Policy["BWI Rate Code"]=bwi
 
 	Hotel_Details['Base Rate']=Cancel_Policy['Base Rate'].values
@@ -601,7 +612,8 @@ def etl(fd,rt,ol,lra,ria,bwi,repeat,qa,ww):
 	Fair_Rates_Final=pd.DataFrame(Fair_Rates)
 	Cancel_Policy_Final=pd.DataFrame(Cancel_Policy)
 
-	
+	#print(Rates)
+	#print('aaaaa')
     ############################YEAR_VALIDATION###################
 	qa=[]
 	repeat=0
